@@ -21,6 +21,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.print.PrinterException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -473,7 +474,7 @@ public class Restaurant {
 			}
 		});
 		btnTotal.setFont(new Font("Tahoma", Font.BOLD, 30));
-		btnTotal.setBounds(49, 19, 209, 45);
+		btnTotal.setBounds(40, 19, 170, 45);
 		panel_4.add(btnTotal);
 		
 		JButton btnReciept = new JButton("Receipt");
@@ -527,8 +528,8 @@ public class Restaurant {
 			
 			}
 		});
-		btnReciept.setFont(new Font("Tahoma", Font.BOLD, 25));
-		btnReciept.setBounds(351, 19, 209, 45);
+		btnReciept.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnReciept.setBounds(290, 19, 170, 45);
 		panel_4.add(btnReciept);
 		
 		JButton btnClear = new JButton("Clear");
@@ -557,7 +558,7 @@ public class Restaurant {
 			}
 		});
 		btnClear.setFont(new Font("Tahoma", Font.BOLD, 30));
-		btnClear.setBounds(665, 19, 209, 45);
+		btnClear.setBounds(800, 19, 170, 45);
 		panel_4.add(btnClear);
 		
 		JButton btnExit = new JButton("Exit");
@@ -574,8 +575,22 @@ public class Restaurant {
 			}
 		});
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 30));
-		btnExit.setBounds(987, 19, 209, 45);
+		btnExit.setBounds(1040, 19, 170, 45);
 		panel_4.add(btnExit);
+		
+		JButton btnPrint = new JButton("Print");
+		btnPrint.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					textReciept.print();
+				} catch (PrinterException e1) {
+					System.err.format("No printer found!", e1.getMessage());
+				}
+			}
+		});
+		btnPrint.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnPrint.setBounds(550, 19, 170, 45);
+		panel_4.add(btnPrint);
 	}
 
 	/**
